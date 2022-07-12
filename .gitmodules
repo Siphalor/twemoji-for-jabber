@@ -1,0 +1,6 @@
+[submodule "unicode-emoji-json"]
+	path = unicode-emoji-json
+	url = https://github.com/muan/unicode-emoji-json
+[submodule "twemoji"]
+	path = twemoji
+	url = https://github.com/twitter/twemoji
