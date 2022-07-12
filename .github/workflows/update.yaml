@@ -21,12 +21,13 @@ jobs:
           cd unicode-emoji-json
           emojiJsonRelease=$(gh api repos/muan/unicode-emoji-json/releases/latest -q .tag_name)
           echo "::set-output name=emojiJsonRelease::$emojiJsonRelease"
-          if [[ $emojiJsonRelease == $(git describe) ]]
+          cd ../twemoji
+          twemojiRelease=$(gh api repos/twitter/twemoji/releases/latest -q .tag_name)
+          echo "::set-output name=twemojiRelease::$twemojiRelease"
+          cd ..
+          if [[ $emojiJsonRelease == $(git -C unicode-emoji-json describe) ]]
           then
-            cd ../twemoji
-            twemojiRelease=$(gh api repos/twitter/twemoji/releases/latest -q .tag_name)
-            echo "::set-output name=twemojiRelease::$emojiJsonRelease"
-            if [[ $twemojiRelease == $(git describe) ]]
+            if [[ $twemojiRelease == $(git -C twemoji describe) ]]
             then
               echo "::set-output name=status::up-to-date"
             fi
@@ -51,20 +52,24 @@ jobs:
           submodules: 'recursive'
       - name: Update submodules
         run: |
+          git -C unicode-emoji-json fetch --tags
           git -C unicode-emoji-json checkout ${{ needs.check.outputs.emojiJsonRelease }}
+          git -C twemoji fetch --tags
           git -C twemoji checkout ${{ needs.check.outputs.twemojiRelease }}
       - name: Generate
         run: |
           python3 definition-generator.py
-          tar -czvf generated twemoji-for-jabber.tar.gz
+          tar -czvf twemoji-for-jabber.tar.gz generated/*
       - name: Commit changes
         uses: stefanzweifel/git-auto-commit-action@v4
         with:
           commit_message: Update to latest dependencies
-      - name: Punlish release
+      - name: Publish release
         uses: marvinpinto/action-automatic-releases@latest
         with:
           repo_token: ${{ secrets.GITHUB_TOKEN }}
           prerelease: false
+          automatic_release_tag: twemoji-${{ needs.check.outputs.twemojiRelease }}-unicode-emoji-json-${{ needs.check.outputs.emojiJsonRelease }}
+          title: Update to Twemoji ${{ needs.check.outputs.twemojiRelease }} | Unicode Emoji JSON ${{ needs.check.outputs.emojiJsonRelease }}
           files: |
             *.tar.gz
