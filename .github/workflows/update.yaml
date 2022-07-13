@@ -3,12 +3,20 @@ on:
   schedule:
     - cron: '39 2 * * *'
   workflow_dispatch:
+    inputs:
+      skip_checks:
+        description: |
+          Skip all checks and updates; Generate and publish directly
+        required: false
+        default: false
+        type: boolean
 
 name: Generate Emojis
 jobs:
   check:
     runs-on: ubuntu-latest
     name: Check for Updates
+    if: "!inputs.skip_checks"
     steps:
       - name: Checkout
         uses: actions/checkout@v2
@@ -43,7 +51,7 @@ jobs:
     runs-on: ubuntu-latest
     needs:
       - check
-    if: "needs.check.outputs.status != 'up-to-date'"
+    if: "needs.check.outputs.status != 'up-to-date' || inputs.skip_checks"
     name: Generate Emoticon Set and Publish
     steps:
       - name: Checkout
