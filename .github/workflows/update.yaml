@@ -58,7 +58,7 @@ jobs:
           git -C twemoji checkout ${{ needs.check.outputs.twemojiRelease }}
       - name: Generate
         run: |
-          python3 definition-generator.py
+          python3 generator.py
           tar -czvf twemoji-for-jabber.tar.gz generated/*
       - name: Commit changes
         uses: stefanzweifel/git-auto-commit-action@v4
