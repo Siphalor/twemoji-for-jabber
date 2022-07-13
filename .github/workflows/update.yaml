@@ -65,9 +65,13 @@ jobs:
           git -C twemoji fetch --tags
           git -C twemoji checkout ${{ needs.check.outputs.twemojiRelease }}
       - name: Generate
+        id: generate
         run: |
           python3 generator.py
           tar -czvf twemoji-for-jabber.tar.gz generated/*
+          base_version=$(cat base_version)
+          echo "::set-output name=version::${base_version}-twe-${{ needs.check.outputs.twemojiRelease }}-unidata-${{ needs.check.outputs.emojiJsonRelease }}"
+          echo "::set-output name=base_version::$base_version"
       - name: Commit changes
         uses: stefanzweifel/git-auto-commit-action@v4
         with:
@@ -77,7 +81,7 @@ jobs:
         with:
           repo_token: ${{ secrets.GITHUB_TOKEN }}
           prerelease: false
-          automatic_release_tag: twemoji-${{ needs.check.outputs.twemojiRelease }}-unicode-emoji-json-${{ needs.check.outputs.emojiJsonRelease }}
-          title: Update to Twemoji ${{ needs.check.outputs.twemojiRelease }} | Unicode Emoji JSON ${{ needs.check.outputs.emojiJsonRelease }}
+          automatic_release_tag: ${{ steps.generate.outputs.version }}
+          title: Version ${{ steps.generate.outputs.base_version }} (Twemoji ${{ needs.check.outputs.twemojiRelease }} | Unicode Data ${{ needs.check.outputs.emojiJsonRelease }})
           files: |
             *.tar.gz
