@@ -32,6 +32,9 @@ def main():
 
         definition_file.write('</emoticons>\n')
 
+    shutil.copy("twemoji/LICENSE-GRAPHICS", os.path.join(output_dir, "LICENSE-GRAPHICS"))
+    shutil.copy("unicode-emoji-json/LICENSE", os.path.join(output_dir, "LICENSE-EMOJIDATA"))
+
 
 def handle_skin_tones(definition_file: IO, emoji_str: str, emoji_slug: str, emoji_title: str, skin_tones: Dict[str, str], skin_tone_position: int):
     for (skin_name, skin_code) in skin_tones.items():
