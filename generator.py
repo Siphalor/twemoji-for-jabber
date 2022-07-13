@@ -69,7 +69,7 @@ def process_emoji(definition_file: IO, emoji_str: str, emoji_slug: str, emoji_ti
     # Emoji titles may contain ampersands
     emoji_title = emoji_title.replace('&', '&amp;')
     definition_file.write(f"<emoticon defaultKey=\":{emoji_slug}:\" image=\"{emoji_slug}.png\" text=\"{emoji_title}\" "
-                          f"order="20000" hidden=\"true\"><alt>{emoji_str}</alt></emoticon>\n")
+                          f"order=\"20000\" hidden=\"true\"><alt>{emoji_str}</alt></emoticon>\n")
     # The order has to be set but doesn't matter since the emojis are already hidden
 
 
