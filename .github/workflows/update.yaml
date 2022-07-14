@@ -39,48 +39,90 @@ jobs:
           cd ..
           if [[ $emojiJsonRelease == $(git -C unicode-emoji-json describe) ]]
           then
-            if [[ $twemojiRelease == $(git -C twemoji describe) ]]
+            if [[ ! $(git -C gemoji log ..origin/master --oneline) ]]
             then
-              echo "::set-output name=status::up-to-date"
+              echo "::set-output name=metadataStatus::up-to-date"
             fi
+          fi
+          if [[ $twemojiRelease == $(git -C twemoji describe) ]]
+          then
+            echo "::set-output name=twemojiStatus::up-to-date"
           fi
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
     outputs:
       emojiJsonRelease: ${{ steps.release-check.outputs.emojiJsonRelease }}
       twemojiRelease: ${{ steps.release-check.outputs.twemojiRelease }}
-      status: ${{ steps.release-check.outputs.status }}
+      metadataStatus: ${{ steps.release-check.outputs.metadataStatus }}
+      twemojiStatus: ${{ steps.release-check.outputs.twemojiStatus }}
+
+  update-metadata:
+    runs-on: ubuntu-latest
+    needs:
+      - check
+    name: Update Emoticon metadata
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+        if: "inputs.skip_checks || needs.check.outputs.metadataStatus != 'up-to-date'"
+        with:
+          fetch-depth: 0
+          submodules: 'recursive'
+      - name: Update submodules
+        if: "inputs.skip_checks || needs.check.outputs.metadataStatus != 'up-to-date'"
+        run: |
+          git -C unicode-emoji-json fetch --tags
+          git -C unicode-emoji-json checkout ${{ needs.check.outputs.emojiJsonRelease }}
+          git -C gemoji fetch
+          git -C gemoji checkout origin/master
+      - name: Generate metadata
+        if: "inputs.skip_checks || needs.check.outputs.metadataStatus != 'up-to-date'"
+        run: python3 metadata-generator.py
+      - name: Commit updates
+        id: auto-commit
+        if: "inputs.skip_checks || needs.check.outputs.metadataStatus != 'up-to-date'"
+        uses: stefanzweifel/git-auto-commit-action@v4
+        with:
+          commit_message: Update to latest metadata dependencies
+      - name: Set outputs
+        if: "inputs.skip_checks || needs.check.outputs.metadataStatus != 'up-to-date'"
+        run:
+          if [[ ${{ steps.auto-commit.outputs.changes_detected }} == "false" ]]
+          then
+            echo "::set-output name=metadataStatus::up-to-date"
+          fi
+    outputs:
+      metadataStatus: ${{ steps.release-check.outputs.metadataStatus }}
 
   generate:
     runs-on: ubuntu-latest
     needs:
       - check
-    if: "inputs.skip_checks || github.event_name == 'push' || needs.check.outputs.status != 'up-to-date'"
-    name: Generate Emoticon Set and Publish
+      - update-metadata
+    if: "inputs.skip_checks || github.event_name == 'push' || needs.check.outputs.metadataStatus != 'up-to-date' || needs.check.outputs.twemojiStatus != 'up-to-date'"
+    name: Generate Twemoji Set and Publish
     steps:
       - name: Checkout
         uses: actions/checkout@v2
         with:
           submodules: 'recursive'
-      - name: Update submodules
+      - name: Update twemoji submodule
         run: |
-          git -C unicode-emoji-json fetch --tags
-          git -C unicode-emoji-json checkout ${{ needs.check.outputs.emojiJsonRelease }}
           git -C twemoji fetch --tags
           git -C twemoji checkout ${{ needs.check.outputs.twemojiRelease }}
-      - name: Generate
+      - name: Generate Twemoji set
         id: generate
         run: |
           python3 generator.py
           base_version=$(cat base_version)
-          echo "::set-output name=version::${base_version}-twe-${{ needs.check.outputs.twemojiRelease }}-unidata-${{ needs.check.outputs.emojiJsonRelease }}"
+          echo "::set-output name=version::${base_version}-twe-${{ needs.check.outputs.twemojiRelease }}-emojidata-$(git log --format=%h metadata.json)"
           echo "::set-output name=base_version::$base_version"
           cd generated
           tar -czf ../twemoji-for-jabber.tar.gz *
       - name: Commit changes
         uses: stefanzweifel/git-auto-commit-action@v4
         with:
-          commit_message: Update to latest dependencies
+          commit_message: Update twemoji version
       - name: Publish release
         uses: marvinpinto/action-automatic-releases@latest
         with:
