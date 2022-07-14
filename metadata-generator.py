@@ -31,6 +31,13 @@ def main():
     with open("metadata.json", "w") as metadata_file:
         json.dump(emoji_metadata, metadata_file)
 
+    with open("CHEATSHEET.md", "w") as cheatsheet_file:
+        cheatsheet_file.write("Use an emoji by putting the slug in colons (`:slug:`) or tildes (`~slug~`).\n\n")
+        cheatsheet_file.write("| Emoji | Slugs | Name |\n"
+                              "| ----- | ----- | ---- |\n")
+        for (_, emoji) in emoji_metadata.items():
+            cheatsheet_file.write(f"| {emoji['emoji']} | {', '.join(map(lambda slug: f'`{slug}`', emoji['slugs']))} | {emoji['name']} |\n")
+
 
 def process_emoji_skins(emoji: str, slugs: List[str], name: Optional[str], skin_tones: Dict[str, str]):
     joiner_index = emoji.find(chr(0x200d))
