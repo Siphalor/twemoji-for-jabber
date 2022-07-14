@@ -132,6 +132,6 @@ jobs:
           repo_token: ${{ secrets.GITHUB_TOKEN }}
           prerelease: false
           automatic_release_tag: ${{ steps.generate.outputs.version }}
-          title: Version ${{ steps.generate.outputs.base_version }} (Twemoji ${{ needs.check.outputs.twemojiRelease }} | Unicode Data ${{ needs.check.outputs.emojiJsonRelease }})
+          title: Version ${{ steps.generate.outputs.base_version }} (Twemoji ${{ needs.check.outputs.twemojiRelease }})
           files: |
             *.tar.gz
