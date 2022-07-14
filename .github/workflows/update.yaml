@@ -108,8 +108,11 @@ jobs:
           submodules: 'recursive'
       - name: Update twemoji submodule
         run: |
-          git -C twemoji fetch --tags
-          git -C twemoji checkout ${{ needs.check.outputs.twemojiRelease }}
+          if [[ $twemojiRelease != $(git -C twemoji describe) ]]
+          then
+            git -C twemoji fetch --tags
+            git -C twemoji checkout ${{ needs.check.outputs.twemojiRelease }}
+          fi
       - name: Generate Twemoji set
         id: generate
         run: |
