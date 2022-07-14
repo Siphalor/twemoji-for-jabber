@@ -83,7 +83,7 @@ jobs:
         if: "inputs.skip_checks || github.event_name == 'push' || needs.check.outputs.metadataStatus != 'up-to-date'"
         uses: stefanzweifel/git-auto-commit-action@v4
         with:
-          commit_message: Update to latest metadata dependencies
+          commit_message: Update metadata
       - name: Set outputs
         if: "inputs.skip_checks || github.event_name == 'push' || needs.check.outputs.metadataStatus != 'up-to-date'"
         run: |
