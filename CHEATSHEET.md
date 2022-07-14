@@ -3391,3 +3391,4 @@ Use an emoji by putting the slug in colons (`:slug:`) or tildes (`~slug~`).
 | 🇼 | `W`, `regional_indicator_w` | Regional Indicator W |
 | 🇽 | `X`, `regional_indicator_x` | Regional Indicator X |
 | 🇾 | `Y`, `regional_indicator_y` | Regional Indicator Y |
+| 🇿 | `Z`, `regional_indicator_z` | Regional Indicator Z |
