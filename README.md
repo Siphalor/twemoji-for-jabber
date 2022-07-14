@@ -9,3 +9,8 @@ Builds can be found in the releases tab, [click here](https://github.com/Siphalo
 You can install the emoji set locally on Windows by extracting the release to `%USERPROFILE%\AppData\Roaming\Cisco\Unified Communications\Jabber\CSF\CustomEmoticons`.
 See [the official Jabber article](https://help.webex.com/en-us/article/WBX72042/How-Do-I-Add-Custom-Emoticons-with-Cisco-Jabber-for-Windows?) for a detailed explanation of custom emojis in Jabber.
 
+## License
+
+The code in this repository is licensed as [MIT](./LICENSE).
+
+The `metadata.json` file is based on `gemoji` and `unicode-emoji-json` and is therefore licensed under the combined MIT licenses of both projects.

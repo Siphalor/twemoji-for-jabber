@@ -23,7 +23,8 @@ def main():
             definition_file.write('</emoticons>\n')
 
         shutil.copy("twemoji/LICENSE-GRAPHICS", os.path.join(output_dir, "LICENSE-GRAPHICS"))
-        shutil.copy("unicode-emoji-json/LICENSE", os.path.join(output_dir, "LICENSE-EMOJIDATA"))
+        shutil.copy("unicode-emoji-json/LICENSE", os.path.join(output_dir, "LICENSE-METADATA-UNICODE-EMOJI-JSON"))
+        shutil.copy("gemoji/LICENSE", os.path.join(output_dir, "LICENSE-METADATA-GEMOJI"))
 
 
 def process_emoji(definition_file: IO, emoji: str, slugs: List[str], name: str):
