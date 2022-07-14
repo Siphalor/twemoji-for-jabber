@@ -48,8 +48,9 @@ def process_emoji(definition_file: IO, emoji: str, slugs: List[str], name: str):
 
     # Emoji titles may contain ampersands
     name = name.replace('&', '&amp;')
+    clean_emoji = emoji.rstrip(chr(0xfe0f))
     definition_file.write(f"<emoticon defaultKey=\":{main_slug}:\" image=\"{main_slug}.png\" text=\"{name}\" "
-                          f"order=\"20000\" hidden=\"true\"><alt>{emoji}</alt>")
+                          f"order=\"20000\" hidden=\"true\"><alt>{clean_emoji}</alt>")
     # The order has to be set but doesn't matter since the emojis are already hidden
     for slug in slugs:
         definition_file.write(f"<alt>:{slug}:</alt><alt>~{slug}~</alt>")
