@@ -86,7 +86,7 @@ jobs:
           commit_message: Update to latest metadata dependencies
       - name: Set outputs
         if: "inputs.skip_checks || needs.check.outputs.metadataStatus != 'up-to-date'"
-        run:
+        run: |
           if [[ ${{ steps.auto-commit.outputs.changes_detected }} == "false" ]]
           then
             echo "::set-output name=metadataStatus::up-to-date"
