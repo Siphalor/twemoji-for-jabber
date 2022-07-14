@@ -64,28 +64,28 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v2
-        if: "inputs.skip_checks || needs.check.outputs.metadataStatus != 'up-to-date'"
+        if: "inputs.skip_checks || github.event_name == 'push' || needs.check.outputs.metadataStatus != 'up-to-date'"
         with:
           fetch-depth: 0
           submodules: 'recursive'
       - name: Update submodules
-        if: "inputs.skip_checks || needs.check.outputs.metadataStatus != 'up-to-date'"
+        if: "inputs.skip_checks || github.event_name == 'push' || needs.check.outputs.metadataStatus != 'up-to-date'"
         run: |
           git -C unicode-emoji-json fetch --tags
           git -C unicode-emoji-json checkout ${{ needs.check.outputs.emojiJsonRelease }}
           git -C gemoji fetch
           git -C gemoji checkout origin/master
       - name: Generate metadata
-        if: "inputs.skip_checks || needs.check.outputs.metadataStatus != 'up-to-date'"
+        if: "inputs.skip_checks || github.event_name == 'push' || needs.check.outputs.metadataStatus != 'up-to-date'"
         run: python3 metadata-generator.py
       - name: Commit updates
         id: auto-commit
-        if: "inputs.skip_checks || needs.check.outputs.metadataStatus != 'up-to-date'"
+        if: "inputs.skip_checks || github.event_name == 'push' || needs.check.outputs.metadataStatus != 'up-to-date'"
         uses: stefanzweifel/git-auto-commit-action@v4
         with:
           commit_message: Update to latest metadata dependencies
       - name: Set outputs
-        if: "inputs.skip_checks || needs.check.outputs.metadataStatus != 'up-to-date'"
+        if: "inputs.skip_checks || github.event_name == 'push' || needs.check.outputs.metadataStatus != 'up-to-date'"
         run: |
           if [[ ${{ steps.auto-commit.outputs.changes_detected }} == "false" ]]
           then
