@@ -28,6 +28,10 @@ def main():
             if data.get('skin_tones'):
                 process_emoji_skins(data['emoji'], data['aliases'], data['description'], skin_tones)
 
+    # Regional indicators
+    for letter in map(chr, range(ord('A'), ord('Z'))):
+        process_emoji(chr(0x1F1E6 + ord(letter) - ord('A')), [letter, f"regional_indicator_{letter.lower()}"], f"Regional Indicator {letter}")
+
     with open("metadata.json", "w") as metadata_file:
         json.dump(emoji_metadata, metadata_file)
 
