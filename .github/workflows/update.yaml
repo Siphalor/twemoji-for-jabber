@@ -49,7 +49,6 @@ jobs:
     runs-on: ubuntu-latest
     needs:
       - check
-      - update-metadata
     if: "inputs.skip_checks || github.event_name == 'push' || needs.check.outputs.twemojiStatus != 'up-to-date'"
     name: Generate Twemoji Set and Publish
     steps:
