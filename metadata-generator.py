@@ -1,7 +1,8 @@
 import json
-from typing import Dict, List, Optional, Any
+from typing import Dict, List, Optional, Any, Set
 
 emoji_metadata: Dict[str, Dict[str, Any]] = {}
+emoji_slugs: Set[str] = set()
 
 
 def main():
@@ -65,8 +66,9 @@ def process_emoji(emoji: str, slugs: List[str], name: Optional[str]):
 
         slugs_ref: List[str] = metadata['slugs']
         for slug in slugs:
-            if slug not in slugs_ref:
+            if slug not in emoji_slugs:
                 slugs_ref.append(slug)
+                emoji_slugs.add(slug)
 
     else:
         emoji_metadata[clean_emoji] = {
@@ -74,6 +76,7 @@ def process_emoji(emoji: str, slugs: List[str], name: Optional[str]):
             'name': name,
             'slugs': slugs
         }
+        emoji_slugs.union(slugs)
 
 
 if __name__ == '__main__':
