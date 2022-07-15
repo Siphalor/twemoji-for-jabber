@@ -10,8 +10,6 @@ on:
 jobs:
   update-metadata:
     runs-on: ubuntu-latest
-    needs:
-      - check-submodules
     name: Update Emoticon metadata
     steps:
       - name: Checkout
