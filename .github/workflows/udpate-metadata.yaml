@@ -1,0 +1,42 @@
+on:
+  push:
+    paths:
+      - metadata-generator.py
+      - gemoji
+      - unicode-emoji-json
+  schedule:
+    - cron: '39 1 * * *'
+
+jobs:
+  update-metadata:
+    runs-on: ubuntu-latest
+    needs:
+      - check-submodules
+    name: Update Emoticon metadata
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+        with:
+          fetch-depth: 0
+          submodules: 'recursive'
+      - name: Update submodules
+        if: "github.event_name == 'schedule'"
+        run: |
+          git -C unicode-emoji-json fetch --tags
+          git -C unicode-emoji-json checkout ${{ needs.check.outputs.emojiJsonRelease }}
+          git -C gemoji fetch
+          git -C gemoji checkout origin/master
+      - name: Commit submodules
+        id: commit-submodules
+        if: "github.event_name == 'schedule'"
+        uses: stefanzweifel/git-auto-commit-action@v4
+        with:
+          commit_message: Update metadata submodules
+      - name: Generate metadata
+        if: "github.event_name == 'push' || steps.commit-submodules.outputs.changes_detected == 'true'"
+        run: python3 metadata-generator.py
+      - name: Commit updates
+        if: "github.event_name == 'push' || steps.commit-submodules.outputs.changes_detected == 'true'"
+        uses: stefanzweifel/git-auto-commit-action@v4
+        with:
+          commit_message: Update metadata.json
