@@ -31,7 +31,7 @@ def main():
 
     # Regional indicators
     for letter in map(chr, range(ord('A'), ord('Z') + 1)):
-        process_emoji(chr(0x1F1E6 + ord(letter) - ord('A')), [letter, f"regional_indicator_{letter.lower()}"], f"Regional Indicator {letter}")
+        process_emoji(chr(0x1F1E6 + ord(letter) - ord('A')), [f"regional_indicator_{letter.lower()}", letter], f"Regional Indicator {letter}")
 
     with open("metadata.json", "w") as metadata_file:
         json.dump(emoji_metadata, metadata_file)
