@@ -76,7 +76,7 @@ def process_emoji(emoji: str, slugs: List[str], name: Optional[str]):
             'name': name,
             'slugs': slugs
         }
-        emoji_slugs.union(slugs)
+        emoji_slugs.update(slugs)
 
 
 if __name__ == '__main__':
