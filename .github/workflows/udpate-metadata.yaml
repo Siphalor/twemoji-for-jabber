@@ -20,8 +20,8 @@ jobs:
       - name: Update submodules
         if: "github.event_name == 'schedule'"
         run: |
-          git -C unicode-emoji-json fetch --tags
-          git -C unicode-emoji-json checkout ${{ needs.check.outputs.emojiJsonRelease }}
+          git -C unicode-emoji-json fetch
+          git -C unicode-emoji-json checkout origin/main
           git -C gemoji fetch
           git -C gemoji checkout origin/master
       - name: Commit submodules
