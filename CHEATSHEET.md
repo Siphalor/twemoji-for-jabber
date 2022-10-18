@@ -51,6 +51,7 @@ Use an emoji by putting the slug in colons (`:slug:`) or tildes (`~slug~`).
 | 😬 | `grimacing_face`, `grimacing` | Grimacing face |
 | 😮‍💨 | `face_exhaling` | Face exhaling |
 | 🤥 | `lying_face` | Lying face |
+| 🫨 | `shaking_face` | Shaking face |
 | 😌 | `relieved_face`, `relieved` | Relieved face |
 | 😔 | `pensive_face`, `pensive` | Pensive face |
 | 😪 | `sleepy_face`, `sleepy` | Sleepy face |
@@ -101,7 +102,7 @@ Use an emoji by putting the slug in colons (`:slug:`) or tildes (`~slug~`).
 | 😫 | `tired_face` | Tired face |
 | 🥱 | `yawning_face` | Yawning face |
 | 😤 | `face_with_steam_from_nose`, `triumph` | Face with steam from nose |
-| 😡 | `pouting_face`, `rage`, `pout` | Pouting face |
+| 😡 | `enraged_face`, `rage`, `pout` | Enraged face |
 | 😠 | `angry_face`, `angry` | Angry face |
 | 🤬 | `face_with_symbols_on_mouth`, `cursing_face` | Face with symbols on mouth |
 | 😈 | `smiling_face_with_horns`, `smiling_imp` | Smiling face with horns |
@@ -128,7 +129,6 @@ Use an emoji by putting the slug in colons (`:slug:`) or tildes (`~slug~`).
 | 🙈 | `see_no_evil_monkey`, `see_no_evil` | See-no-evil monkey |
 | 🙉 | `hear_no_evil_monkey`, `hear_no_evil` | Hear-no-evil monkey |
 | 🙊 | `speak_no_evil_monkey`, `speak_no_evil` | Speak-no-evil monkey |
-| 💋 | `kiss_mark` | Kiss mark |
 | 💌 | `love_letter` | Love letter |
 | 💘 | `heart_with_arrow`, `cupid` | Heart with arrow |
 | 💝 | `heart_with_ribbon`, `gift_heart` | Heart with ribbon |
@@ -143,14 +143,18 @@ Use an emoji by putting the slug in colons (`:slug:`) or tildes (`~slug~`).
 | ❤️‍🔥 | `heart_on_fire` | Heart on fire |
 | ❤️‍🩹 | `mending_heart` | Mending heart |
 | ❤️ | `red_heart`, `heart` | Red heart |
+| 🩷 | `pink_heart` | Pink heart |
 | 🧡 | `orange_heart` | Orange heart |
 | 💛 | `yellow_heart` | Yellow heart |
 | 💚 | `green_heart` | Green heart |
 | 💙 | `blue_heart` | Blue heart |
+| 🩵 | `light_blue_heart` | Light blue heart |
 | 💜 | `purple_heart` | Purple heart |
 | 🤎 | `brown_heart` | Brown heart |
 | 🖤 | `black_heart` | Black heart |
+| 🩶 | `grey_heart` | Grey heart |
 | 🤍 | `white_heart` | White heart |
+| 💋 | `kiss_mark` | Kiss mark |
 | 💯 | `hundred_points`, `100` | Hundred points |
 | 💢 | `anger_symbol`, `anger` | Anger symbol |
 | 💥 | `collision`, `boom` | Collision |
@@ -158,7 +162,6 @@ Use an emoji by putting the slug in colons (`:slug:`) or tildes (`~slug~`).
 | 💦 | `sweat_droplets`, `sweat_drops` | Sweat droplets |
 | 💨 | `dashing_away`, `dash` | Dashing away |
 | 🕳️ | `hole` | Hole |
-| 💣 | `bomb` | Bomb |
 | 💬 | `speech_balloon` | Speech balloon |
 | 👁️‍🗨️ | `eye_in_speech_bubble`, `eye_speech_bubble` | Eye in speech bubble |
 | 🗨️ | `left_speech_bubble` | Left speech bubble |
@@ -219,6 +222,18 @@ Use an emoji by putting the slug in colons (`:slug:`) or tildes (`~slug~`).
 | 🫴🏽 | `medium_palm_up_hand` | Medium palm up hand |
 | 🫴🏾 | `medium_dark_palm_up_hand` | Medium dark palm up hand |
 | 🫴🏿 | `dark_palm_up_hand` | Dark palm up hand |
+| 🫷 | `leftwards_pushing_hand` | Leftwards pushing hand |
+| 🫷🏻 | `light_leftwards_pushing_hand` | Light leftwards pushing hand |
+| 🫷🏼 | `medium_light_leftwards_pushing_hand` | Medium light leftwards pushing hand |
+| 🫷🏽 | `medium_leftwards_pushing_hand` | Medium leftwards pushing hand |
+| 🫷🏾 | `medium_dark_leftwards_pushing_hand` | Medium dark leftwards pushing hand |
+| 🫷🏿 | `dark_leftwards_pushing_hand` | Dark leftwards pushing hand |
+| 🫸 | `rightwards_pushing_hand` | Rightwards pushing hand |
+| 🫸🏻 | `light_rightwards_pushing_hand` | Light rightwards pushing hand |
+| 🫸🏼 | `medium_light_rightwards_pushing_hand` | Medium light rightwards pushing hand |
+| 🫸🏽 | `medium_rightwards_pushing_hand` | Medium rightwards pushing hand |
+| 🫸🏾 | `medium_dark_rightwards_pushing_hand` | Medium dark rightwards pushing hand |
+| 🫸🏿 | `dark_rightwards_pushing_hand` | Dark rightwards pushing hand |
 | 👌 | `ok_hand` | Ok hand |
 | 👌🏻 | `light_ok_hand` | Light ok hand |
 | 👌🏼 | `medium_light_ok_hand` | Medium light ok hand |
@@ -645,7 +660,7 @@ Use an emoji by putting the slug in colons (`:slug:`) or tildes (`~slug~`).
 | 🙍🏽‍♀️ | `medium_woman_frowning`, `medium_frowning_woman` | Medium woman frowning |
 | 🙍🏾‍♀️ | `medium_dark_woman_frowning`, `medium_dark_frowning_woman` | Medium dark woman frowning |
 | 🙍🏿‍♀️ | `dark_woman_frowning`, `dark_frowning_woman` | Dark woman frowning |
-| 🙎 | `person_pouting` | Person pouting |
+| 🙎 | `person_pouting`, `pouting_face` | Person pouting |
 | 🙎🏻 | `light_person_pouting`, `light_pouting_face` | Light person pouting |
 | 🙎🏼 | `medium_light_person_pouting`, `medium_light_pouting_face` | Medium light person pouting |
 | 🙎🏽 | `medium_person_pouting`, `medium_pouting_face` | Medium person pouting |
@@ -2061,6 +2076,8 @@ Use an emoji by putting the slug in colons (`:slug:`) or tildes (`~slug~`).
 | 🐅 | `tiger`, `tiger2` | Tiger |
 | 🐆 | `leopard` | Leopard |
 | 🐴 | `horse_face` | Horse face |
+| 🫎 | `moose` | Moose |
+| 🫏 | `donkey` | Donkey |
 | 🐎 | `horse`, `racehorse` | Horse |
 | 🦄 | `unicorn` | Unicorn |
 | 🦓 | `zebra` | Zebra |
@@ -2123,6 +2140,9 @@ Use an emoji by putting the slug in colons (`:slug:`) or tildes (`~slug~`).
 | 🦩 | `flamingo` | Flamingo |
 | 🦚 | `peacock` | Peacock |
 | 🦜 | `parrot` | Parrot |
+| 🪽 | `wing` | Wing |
+| 🐦‍⬛ | `black_bird` | Black bird |
+| 🪿 | `goose` | Goose |
 | 🐸 | `frog` | Frog |
 | 🐊 | `crocodile` | Crocodile |
 | 🐢 | `turtle` | Turtle |
@@ -2143,6 +2163,7 @@ Use an emoji by putting the slug in colons (`:slug:`) or tildes (`~slug~`).
 | 🐙 | `octopus` | Octopus |
 | 🐚 | `spiral_shell`, `shell` | Spiral shell |
 | 🪸 | `coral` | Coral |
+| 🪼 | `jellyfish` | Jellyfish |
 | 🐌 | `snail` | Snail |
 | 🦋 | `butterfly` | Butterfly |
 | 🐛 | `bug` | Bug |
@@ -2170,6 +2191,7 @@ Use an emoji by putting the slug in colons (`:slug:`) or tildes (`~slug~`).
 | 🌻 | `sunflower` | Sunflower |
 | 🌼 | `blossom` | Blossom |
 | 🌷 | `tulip` | Tulip |
+| 🪻 | `hyacinth` | Hyacinth |
 | 🌱 | `seedling` | Seedling |
 | 🪴 | `potted_plant` | Potted plant |
 | 🌲 | `evergreen_tree` | Evergreen tree |
@@ -2185,6 +2207,7 @@ Use an emoji by putting the slug in colons (`:slug:`) or tildes (`~slug~`).
 | 🍃 | `leaf_fluttering_in_wind`, `leaves` | Leaf fluttering in wind |
 | 🪹 | `empty_nest` | Empty nest |
 | 🪺 | `nest_with_eggs` | Nest with eggs |
+| 🍄 | `mushroom` | Mushroom |
 | 🍇 | `grapes` | Grapes |
 | 🍈 | `melon` | Melon |
 | 🍉 | `watermelon` | Watermelon |
@@ -2216,10 +2239,11 @@ Use an emoji by putting the slug in colons (`:slug:`) or tildes (`~slug~`).
 | 🥦 | `broccoli` | Broccoli |
 | 🧄 | `garlic` | Garlic |
 | 🧅 | `onion` | Onion |
-| 🍄 | `mushroom` | Mushroom |
 | 🥜 | `peanuts` | Peanuts |
 | 🫘 | `beans` | Beans |
 | 🌰 | `chestnut` | Chestnut |
+| 🫚 | `ginger_root` | Ginger root |
+| 🫛 | `pea_pod` | Pea pod |
 | 🍞 | `bread` | Bread |
 | 🥐 | `croissant` | Croissant |
 | 🥖 | `baguette_bread` | Baguette bread |
@@ -2592,11 +2616,10 @@ Use an emoji by putting the slug in colons (`:slug:`) or tildes (`~slug~`).
 | 🎯 | `bullseye`, `dart` | Bullseye |
 | 🪀 | `yo_yo` | Yo-yo |
 | 🪁 | `kite` | Kite |
+| 🔫 | `water_pistol`, `gun` | Water pistol |
 | 🎱 | `pool_8_ball`, `8ball` | Pool 8 ball |
 | 🔮 | `crystal_ball` | Crystal ball |
 | 🪄 | `magic_wand` | Magic wand |
-| 🧿 | `nazar_amulet` | Nazar amulet |
-| 🪬 | `hamsa` | Hamsa |
 | 🎮 | `video_game` | Video game |
 | 🕹️ | `joystick` | Joystick |
 | 🎰 | `slot_machine` | Slot machine |
@@ -2641,6 +2664,7 @@ Use an emoji by putting the slug in colons (`:slug:`) or tildes (`~slug~`).
 | 🩳 | `shorts` | Shorts |
 | 👙 | `bikini` | Bikini |
 | 👚 | `woman_s_clothes`, `womans_clothes` | Woman’s clothes |
+| 🪭 | `folding_hand_fan` | Folding hand fan |
 | 👛 | `purse` | Purse |
 | 👜 | `handbag` | Handbag |
 | 👝 | `clutch_bag`, `pouch` | Clutch bag |
@@ -2655,6 +2679,7 @@ Use an emoji by putting the slug in colons (`:slug:`) or tildes (`~slug~`).
 | 👡 | `woman_s_sandal`, `sandal` | Woman’s sandal |
 | 🩰 | `ballet_shoes` | Ballet shoes |
 | 👢 | `woman_s_boot`, `boot` | Woman’s boot |
+| 🪮 | `hair_pick` | Hair pick |
 | 👑 | `crown` | Crown |
 | 👒 | `woman_s_hat`, `womans_hat` | Woman’s hat |
 | 🎩 | `top_hat`, `tophat` | Top hat |
@@ -2693,6 +2718,8 @@ Use an emoji by putting the slug in colons (`:slug:`) or tildes (`~slug~`).
 | 🪕 | `banjo` | Banjo |
 | 🥁 | `drum` | Drum |
 | 🪘 | `long_drum` | Long drum |
+| 🪇 | `maracas` | Maracas |
+| 🪈 | `flute` | Flute |
 | 📱 | `mobile_phone`, `iphone` | Mobile phone |
 | 📲 | `mobile_phone_with_arrow`, `calling` | Mobile phone with arrow |
 | ☎️ | `telephone`, `phone` | Telephone |
@@ -2812,7 +2839,7 @@ Use an emoji by putting the slug in colons (`:slug:`) or tildes (`~slug~`).
 | 🛠️ | `hammer_and_wrench` | Hammer and wrench |
 | 🗡️ | `dagger` | Dagger |
 | ⚔️ | `crossed_swords` | Crossed swords |
-| 🔫 | `water_pistol`, `gun` | Water pistol |
+| 💣 | `bomb` | Bomb |
 | 🪃 | `boomerang` | Boomerang |
 | 🏹 | `bow_and_arrow` | Bow and arrow |
 | 🛡️ | `shield` | Shield |
@@ -2873,6 +2900,8 @@ Use an emoji by putting the slug in colons (`:slug:`) or tildes (`~slug~`).
 | ⚰️ | `coffin` | Coffin |
 | 🪦 | `headstone` | Headstone |
 | ⚱️ | `funeral_urn` | Funeral urn |
+| 🧿 | `nazar_amulet` | Nazar amulet |
+| 🪬 | `hamsa` | Hamsa |
 | 🗿 | `moai`, `moyai` | Moai |
 | 🪧 | `placard` | Placard |
 | 🪪 | `identification_card` | Identification card |
@@ -2935,6 +2964,7 @@ Use an emoji by putting the slug in colons (`:slug:`) or tildes (`~slug~`).
 | ☮️ | `peace_symbol` | Peace symbol |
 | 🕎 | `menorah` | Menorah |
 | 🔯 | `dotted_six_pointed_star`, `six_pointed_star` | Dotted six-pointed star |
+| 🪯 | `khanda` | Khanda |
 | ♈ | `aries` | Aries |
 | ♉ | `taurus` | Taurus |
 | ♊ | `gemini` | Gemini |
@@ -2970,6 +3000,7 @@ Use an emoji by putting the slug in colons (`:slug:`) or tildes (`~slug~`).
 | 🔅 | `dim_button`, `low_brightness` | Dim button |
 | 🔆 | `bright_button`, `high_brightness` | Bright button |
 | 📶 | `antenna_bars`, `signal_strength` | Antenna bars |
+| 🛜 | `wireless` | Wireless |
 | 📳 | `vibration_mode` | Vibration mode |
 | 📴 | `mobile_phone_off` | Mobile phone off |
 | ♀️ | `female_sign` | Female sign |
@@ -3011,8 +3042,8 @@ Use an emoji by putting the slug in colons (`:slug:`) or tildes (`~slug~`).
 | ©️ | `copyright` | Copyright |
 | ®️ | `registered` | Registered |
 | ™️ | `trade_mark`, `tm` | Trade mark |
-| #️⃣ | `keycap_`, `hash` | Keycap # |
-| *️⃣ | `keycap_`, `asterisk` | Keycap * |
+| #️⃣ | `keycap_number_sign`, `hash` | Keycap # |
+| *️⃣ | `keycap_asterisk`, `asterisk` | Keycap * |
 | 0️⃣ | `keycap_0`, `zero` | Keycap 0 |
 | 1️⃣ | `keycap_1`, `one` | Keycap 1 |
 | 2️⃣ | `keycap_2`, `two` | Keycap 2 |
